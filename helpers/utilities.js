@@ -21,7 +21,7 @@ utilities.parseJSON = (jsonString) => {
   return output;
 };
 
-// hashing
+// string hashing
 utilities.hash = (str) => {
   if (typeof str === "string" && str.length > 0) {
     let hash = crypto
