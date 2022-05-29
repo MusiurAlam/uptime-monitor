@@ -7,12 +7,14 @@ environment.staging = {
   port: 3000,
   envName: "staging",
   secretKey: "opu1",
+  maxChecks: 5
 };
 
 environment.production = {
   port: 5000,
   envName: "production",
   secretKey: "opu2",
+  maxChecks: 5
 };
 
 //determine which environment was passed
