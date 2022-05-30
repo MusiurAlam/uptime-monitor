@@ -5,27 +5,22 @@
 // date 
 
 // dependencies
-const http = require("http");
-const {handleReqRes} = require("./helpers/handleReqRes");
-const environment = require("./helpers/environment");
-// const data = require("./lib/data");
+const server = require("./lib/server");
+const workers = require("./lib/workers");
 
 // app object - module scaffolding
 const app = {};
 
-// create server
-app.createServer = () => {
-    const server = http.createServer(app.handleReqRes);
 
-    server.listen(environment.port, () => {
-        // eslint-disable-next-line no-undef
-        console.log(`environment variable is ${process.env.NODE_ENV} `)
-        console.log(`Listening to port ${environment.port}`);
-    })
+app.init = () => {
+    // start the server
+    server.init();
+
+    // start the workers
+    workers.init();
 }
 
-// handle request response
-app.handleReqRes = handleReqRes;
+app.init();
 
-// start the server 
-app.createServer();
+//export the app
+module.exports = app;
